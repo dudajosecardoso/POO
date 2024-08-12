@@ -11,3 +11,5 @@ public class Area{
         scanner.close();
     }
 }
+
+//  Fazer um algoritmo que leia as dimensões da base e da altura de um triângulo, calcule e escreva a sua área.
