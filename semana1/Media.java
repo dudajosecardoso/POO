@@ -13,3 +13,6 @@ public class Media{
         scanner.close();
     }
 }
+
+// Fazer um algoritmo que leia três notas de um aluno, calcule e escreva a sua média aritmética conforme
+// equação.
