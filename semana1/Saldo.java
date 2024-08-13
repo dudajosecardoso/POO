@@ -13,3 +13,7 @@ public class Saldo{
         System.out.println("O total é: " + total);
     }
 }
+
+// Uma pessoa aplicou um valor em um determinado banco. Fazer um algoritmo que leia o valor inicial
+// aplicado, o percentual de juros pago pelo banco (fixo para todos os meses) e a quantidade de meses que a
+// pessoa deixou este valor aplicado, após calcule e escreva o saldo final desta aplicação.
