@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import math.pow;
 public class Saldo{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
