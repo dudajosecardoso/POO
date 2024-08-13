@@ -11,3 +11,5 @@ public class AreaRetangulo{
         scanner.close();
     }
 }
+
+// Fazer um algoritmo que leia as dimensões dos lados de um retângulo, calcule e escreva a sua área.
