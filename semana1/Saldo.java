@@ -10,6 +10,7 @@ public class Saldo{
         double aux = saldoInicial * ( 1 + (juros / 100));
         double total = Math.pow(aux, meses);
         System.out.println("O total é: " + total);
+        scanner.close();
     }
 }
 
