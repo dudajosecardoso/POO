@@ -179,9 +179,9 @@ public class Manage {
 
                 case 6:
                     System.out.println("Relatórios:");
-                    System.out.println("1. Carros com autonomia baixa");
+                    System.out.println("1. Carros com autonomia inferior a 20% da capacidade total");
                     System.out.println("2. Viagens de um motorista");
-                    System.out.println("3. Recargas de um carro");
+                    System.out.println("3. Histórico de recargas de um carro");
                     System.out.println("4. Carros que precisam de manutenção");
                     int opcaoRelatorio = scanner.nextInt();
                     scanner.nextLine();
@@ -189,26 +189,40 @@ public class Manage {
                     switch (opcaoRelatorio) {
                         case 1:
                             List<CarroEletrico> carrosComAutonomiaBaixa = gestaoFrota.getCarrosComAutonomiaBaixa();
-                            System.out.println("Carros com autonomia baixa:");
+                            System.out.println("Carros com autonomia inferior a 20% da capacidade total:");
                             for (CarroEletrico carros : carrosComAutonomiaBaixa) {
-                                System.out.println(carros.getId());
+                                System.out.println(
+                                        carros.getId() + " - Autonomia: " + carros.getAutonomiaAtual() + " kWh");
                             }
                             break;
 
                         case 2:
-                            List<Viagem> viagensDeMotorista = gestaoFrota
-                                    .getViagensDeMotorista(gestaoFrota.getMotoristas());
-                            System.out.println(" Viagens do motorista:");
+                            System.out.print("Digite o ID do motorista: ");
+                            String idMotoristas = scanner.nextLine();
+                            List<Viagem> viagensDeMotorista = gestaoFrota.getViagensDeMotorista(idMotoristas);
+                            System.out.println("Viagens do motorista " + idMotoristas + ":");
                             for (Viagem viagens : viagensDeMotorista) {
-                                System.out.println(viagens.getDestino());
+                                System.out.println("Destino: " + viagens.getDestino() +
+                                        ", Distância: " + viagens.getDistanciaPercorrida() +
+                                        " km, Carro: " + viagens.getCarro().getId());
+                                // Listar recargas associadas
+                                List<Recarga> recargas = viagens.getRecargas();
+                                for (Recarga recarges : recargas) {
+                                    System.out.println("  - Recarga em: " + recarges.getEletroposto().getId() +
+                                            ", Quantidade: " + recarges.getQuantidadeRecarregada() +
+                                            " kWh");
+                                }
                             }
                             break;
 
                         case 3:
-                            List<Recarga> recargasDeCarro = gestaoFrota.getRecargasDeCarro(gestaoFrota.getCarros());
-                            System.out.println("Recargas do carro:");
+                            System.out.print("Digite o ID do carro: ");
+                            String idCarroRecargas = scanner.nextLine();
+                            List<Recarga> recargasDeCarro = gestaoFrota.getRecargasDeCarro(idCarroRecargas);
+                            System.out.println("Histórico de recargas do carro " + idCarroRecargas + ":");
                             for (Recarga recargas : recargasDeCarro) {
-                                System.out.println(recargas.getDataRecarga());
+                                System.out.println("Data: " + recargas.getDataRecarga() +
+                                        ", Quantidade: " + recargas.getQuantidadeRecarregada() + " kWh");
                             }
                             break;
 
@@ -217,7 +231,8 @@ public class Manage {
                                     .getCarrosQuePrecisamDeManutencao();
                             System.out.println("Carros que precisam de manutenção:");
                             for (CarroEletrico carros : carrosQuePrecisamDeManutencao) {
-                                System.out.println(carros.getId());
+                                System.out.println(
+                                        carros.getId() + " - Autonomia: " + carros.getAutonomiaAtual() + " kWh");
                             }
                             break;
 
